@@ -96,8 +96,8 @@ Parámetros:
 Salida:
 - Se devuelve el nuevo árbol con el nodo insertado
 Ejemplo:
--(insert-node (node 1 "a" "a") 1 4 "d" "d")
--   devuelve '((1 "a" "a") (((4 "d" "d") ()))
+-(insert-node (node 1 "a" "a") 1 4 "d" "d" 10)
+-   devuelve '((1 "a" "a") ((((4 "d" "d") ()) 10)))
 -
 -(insert-node (insert-node (insert-node (node 1 "a" "a") 1 2 "b" "b" 10) 1 3 "c" "c" 20) 3 4 "d" "d" 30)
 -   devuelve '((1 "a" "a") ((((2 "b" "b") ()) 10) (((3 "c" "c") ((((4 "d" "d") ()) 30))) 20)))
