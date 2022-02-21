@@ -15,8 +15,36 @@ Ejemplo:
 (define (node id name value)
   (list (list id name value) '()))
 
+#|
+Crea una arista
+Parámetros:
+- newNode: es el nodo de la arista
+- weight: es el peso de la arista
+Salida:
+- Se devuelve una lista con dos listas, la primera
+- corresponde a la información del nodo y la segunda
+- se usa para albergar a sus hijos.
+Ejemplo:
+(edge (node 1 "a" "a") 10) devuelve '(((1 "a" "a") '()) 10)
+|#
 (define (edge newNode weight)
   (list newNode weight))
+
+#|
+Crea una arista
+Parámetros:
+- newNode: es el nodo de la arista
+- weight: es el peso de la arista
+Salida:
+- Se devuelve una lista con dos listas, la primera
+- corresponde a la información del nodo y la segunda
+- se usa para albergar a sus hijos.
+Ejemplo:
+(list-all-nodes (insert-node (insert-node (insert-node (node 1 "a" "a") 1 2 "b" "b" 10) 1 3 "c" "c" 20) 3 4 "d" "d" 30))
+devuelve ((1 a a) ((((2 b b) ()) 10) (((3 c c) ((((4 d d) ()) 30))) 20)))
+|#
+(define (list-all-nodes tree)
+  (display tree))
 
 #|
 Encuentra un nodo en el árbol según el id
@@ -39,7 +67,7 @@ Ejemplo:
      ]
     ))
 #|
-Sirve de ciclo para la función find-node
+Sirve para iterar los hijos de un nodo en la función find-node
 Parámetros:
 - lst: son los hijos de un nodo
 - id: es el id del nodo a buscar
@@ -72,7 +100,7 @@ Ejemplo:
 -   devuelve '((1 "a" "a") (((4 "d" "d") ()))
 -
 -(insert-node (insert-node (insert-node (node 1 "a" "a") 1 2 "b" "b" 10) 1 3 "c" "c" 20) 3 4 "d" "d" 30)
--   devuelve '((1 "a" "a") ((((2 "b" "b") ()) (10)) (((3 "c" "c") ((((4 "d" "d") ()) 30))) (20))))
+-   devuelve '((1 "a" "a") ((((2 "b" "b") ()) 10) (((3 "c" "c") ((((4 "d" "d") ()) 30))) 20)))
 |#
 (define (insert-node tree parent id name value weight)
   (cond
@@ -95,12 +123,12 @@ Parámetros:
 - id: es el id del nuevo nodo
 Salida:
 - Se devuelve el nuevo árbol con el nodo eliminado
-Ejemplo:
+Ejemplos:
 -(delete-node (node 1 "a" "a") 1)
 -   devuelve '()
 -
 -(delete-node (insert-node (insert-node (insert-node (node 1 "a" "a") 1 2 "b" "b" 10) 1 3 "c" "c" 20) 3 4 "d" "d" 30) 1)
--   devuelve '((2 "b" "b") ((((3 "c" "c") ((((4 "d" "d") ()) 30))) (20))))
+-   devuelve '((2 "b" "b") ((((3 "c" "c") ((((4 "d" "d") ()) 30))) 20)))
 |#
 
 (define (delete-node tree id)
