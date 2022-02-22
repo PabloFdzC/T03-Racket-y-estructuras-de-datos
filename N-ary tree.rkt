@@ -31,14 +31,13 @@ Ejemplo:
   (list newNode weight))
 
 #|
-Crea una arista
+Lista todos los nodos del árbol.
 Parámetros:
-- newNode: es el nodo de la arista
-- weight: es el peso de la arista
+- tree: el árbol que se debe listar
 Salida:
-- Se devuelve una lista con dos listas, la primera
-- corresponde a la información del nodo y la segunda
-- se usa para albergar a sus hijos.
+- Se devuelve una lista donde se tienen los nodos
+- los cuales contienen una lista con sus nodos
+- hijos
 Ejemplo:
 (list-all-nodes (insert-node (insert-node (insert-node (node 1 "a" "a") 1 2 "b" "b" 10) 1 3 "c" "c" 20) 3 4 "d" "d" 30))
 devuelve ((1 a a) ((((2 b b) ()) 10) (((3 c c) ((((4 d d) ()) 30))) 20)))
@@ -152,11 +151,12 @@ Ejemplos:
 
 
  #|
-Encuentra un nodo en el árbol según el id
+Encuentra el padre de un nodo en el árbol según el id
 Parámetros:
 - tree: el árbol que tiene la forma del nodo
 -     explicado en la función node
-- id: es el id del nodo a buscar
+- id: es el id del nodo que se le quiere
+-     buscar el ancestro
 Salida:
 - Se devuelve los datos del nodo que tenga como
 - padre, si es la raíz devuelve una lista vacía
